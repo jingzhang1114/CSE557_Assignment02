@@ -1,0 +1,33 @@
+.row .img-bg{
+    width: 1150px;
+    height: 250px;
+    text-align: center;
+}
+
+.row .title{
+    font-size: 60px;
+    text-align: center;
+}
+
+.row .member{
+    font-size: 40px;
+    text-align: center;
+}
+
+.card h2{
+    font-size: 30px;
+    text-align: center;
+}
+
+.row .card-body{
+    text-align: center;
+}
+
+#test{
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    border-radius: 2%;
+    padding-right: 50%;
+
+}
