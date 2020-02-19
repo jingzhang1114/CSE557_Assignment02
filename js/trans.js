@@ -1,6 +1,3 @@
-const w = 1000;
-const h = 600;
-
 let trans = []; // dataset from tsv file
 //let logging = []; // interactions logging
 let tranData = [];
@@ -13,9 +10,9 @@ let myHours = [];
 
 let margin = {top: 30, right: 30, bottom: 30, left: 140},
   width = 1000 - margin.left - margin.right,
-  height = 450 - margin.top - margin.bottom;
+  height = 600 - margin.top - margin.bottom;
 
-var tooltip = d3.select("body").select(".tran-figure")
+let tooltipT = d3.select("body").select(".tran-figure")
 .append("div")
 .style('position', 'absolute')
 .style("z-index", "10")
@@ -24,26 +21,18 @@ var tooltip = d3.select("body").select(".tran-figure")
 .text("a simple tooltip");
 
 //Create SVG element
-let svg = d3.select("body").select(".tran-figure") 
+let svgT = d3.select("body").select(".tran-figure") 
     .append("svg")
+    .attr("class","svg_trans")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
-    //.append("svg")
-    //.attr("width", w)
-    //.attr("height", h);
 
 
 d3.csv("data/cc_data.csv")
     .row( (d, i) => {
-        /** 
-        let mark = 1;
-        if(d.x == "NaN" || d.y == "NaN") {
-            mark = 0;
-        }
-        */
        //1/6/2014 7:28
 
         let dateParse = d3.timeParse("%m/%d/%Y %H:%M");
@@ -70,10 +59,8 @@ d3.csv("data/cc_data.csv")
             console.log("Last  row: ", rows[rows.length-1])
         }
         
-        //trans = rows;
         transData(rows);
-        //rows = wrangleData(rows);
-        //console.log("After dealing with missing data: Loaded " + rows.length + " rows");
+
         
         // Build X scales and axis:
         let x = d3.scaleBand()
@@ -81,7 +68,7 @@ d3.csv("data/cc_data.csv")
         .domain(myHours)
         .padding(0.01);
 
-        svg.append("g")
+        svgT.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x))
 
@@ -91,7 +78,7 @@ d3.csv("data/cc_data.csv")
         .domain(myLocations)
         .padding(0.01);
         
-        svg.append("g")
+        svgT.append("g")
         .call(d3.axisLeft(y));
 
         // Build color scale
@@ -103,7 +90,7 @@ d3.csv("data/cc_data.csv")
         //Read the data
 
 
-        svg.selectAll()
+        svgT.selectAll()
         .data(tranData, function(d) {return d.hour+':'+d.location;})
         .enter()
         .append("rect")
@@ -114,77 +101,24 @@ d3.csv("data/cc_data.csv")
         .style("fill", function(d) { return myColor(d.number)} )
         .on('mouseover', function(d, i) {
             //console.log("mouseover", d);
-            return tooltip.style("visibility", "visible").style("color","black").style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").text("Number of Records: "+d.number);
+            return tooltipT.style("visibility", "visible").style("color","black").style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px")
+            //.text("Number of Records: "+d.number);
+            .html("Location: " +d.location+"<br/>"+"Hour: "+d.hour+"<br/>"+"Number of Records: "+d.number);
         })
 
-        
-            
-        
-        
         /** 
-        gps = rows;
-
-
-
-
-
-        for(let i = 0; i < gps.length; i++) {
-            
-            
-            //$('#filter_carID').append('<option value="'+gps[i].carID+'" selected="selected">'+gps[i].carID+'</option>');
-            if(filter_carID.includes(gps[i].carID) == false) {
-                filter_carID.push(gps[i].carID);
-                console.log(gps[i].carID);
-                //$('select').append('<option>'+gps[i].carID+'</option>');
-
-                let $append = $("<option value='" + gps[i].carID + "'>" + gps[i].carID + "</option>");
-                //let $append = $("<option value= gps[i].carID>" + gps[i].carID + "</option>");
-                $("#filter_carID").append($append);
-                $('#filter_carID').selectpicker('refresh');
-            }
-            
-        }
-
-        
-
-        //window.location.reload()
-
-        /** 
-        d3.select("#filter_carID")
-        .selectAll('myOptions')
-           .data(filter_carID)
-        .enter()
-          .append('option')
-        .text(function (d) { return d; }) // text showed in the menu
-        .attr("value", function (d) { return d; }) // corresponding value returned by the button
-        
-
-        //$('#filter_carID').selectpicker('val', filter_carID);
-
-        x = d3.scaleLinear()
-        .domain(d3.extent(rows, (row) => row.longitude))
-        .range([0, w]);
-                        
-        y = d3.scaleLinear()
-        .domain(d3.extent(rows, (row) => row.latitude))
-        .range([h, 0]);
-        //.range([0, h]);
-        
-
-        $('#filter_carID').on('changed.bs.select',function(e){
-            console.log(getCarID());
-            selected = getCarID();
-            draw(selected);
-
-            
-
-        });
-
-        */
-
+        svgT.selectAll("rect").append('text')
+        .attr("x", function(d) { return x(d.hour) })
+        .attr("y", function(d) { return y(d.location) })
+            .text(function (d) {
+                return d.number
+            })
+            .style('font-size', '12px')
+*/
 
     });
 
+    /** 
 function draw(selectedGroup) {
     console.log("Draw!");
 
@@ -209,8 +143,8 @@ function draw(selectedGroup) {
             //console.log("Event!");
             cache = {type: d3.event.type, x: d3.event.x, y: d3.event.y, timeStamp: d3.event.timeStamp};
             logging.push(cache);
-        }*/
-        console.log("mouseover", d);
+        }
+        //console.log("mouseover", d);
 	      return tooltip.style("visibility", "visible").style("color","black").style("top", (event.pageY-10)+"px").style("left",(event.pageX+10)+"px").text("carID: "+d.carID + "; Time: "+ d.timeStamp);
 	    })
 	    .on('mouseout', function(d, i) {
@@ -230,9 +164,10 @@ function draw(selectedGroup) {
                 logging.push(cache);
            
             return tooltip.style("visibility", "visible").style("color","blue").text(d.place + ": " + d.density + ",   Current picked cities: " + cities);
-             }*/
+             }
             
   }
+  */
 
 
 /** 
@@ -293,7 +228,7 @@ function transData(rows) {
         }
     }
 
-    console.log(tranData);
+    //console.log(tranData);
     
 
     
@@ -337,3 +272,40 @@ function transData(rows) {
       };
       */
 }
+
+/** 
+d3.select("#save").on("click", function(){
+    var html = d3.select(".svg_trans")
+    .attr("version", 1.1)
+    .attr("xmlns", "http://www.w3.org/2000/svg")
+    .node().parentNode.innerHTML;
+    //var imgsrc = 'data:image/svg+xml;base64,'+ btoa(html);
+    //var str = "äöüÄÖÜçéèñ";
+var b64 = window.btoa(unescape(encodeURIComponent(html)))
+//console.log(b64);
+
+var str2 = decodeURIComponent(escape(window.atob(b64)));
+//console.log(str2);
+var imgsrc = 'data:image/svg+xml;base64,'+ str2;
+    var img = '<img src="'+imgsrc+'">';
+    d3.select("#svgdataurl").html(img);
+    // 上面和前面的实现是一样的
+    //canvg('canvas', $(".svg_trans").html());
+    var canvas = document.querySelector("canvas"),
+    context = canvas.getContext("2d");
+    var image = new Image;
+    image.src = imgsrc;
+    image.onload = function() {
+      context.drawImage(image, 0, 0);
+      var canvasdata = canvas.toDataURL("image/png");
+      var pngimg = '<img src="'+canvasdata+'">';
+     
+      d3.select("#pngdataurl").html(pngimg);
+      var a = document.createElement("a");
+      a.download = "sample.png";
+      a.href = canvasdata;
+      document.body.appendChild(a);
+      a.click();
+    };
+   });
+*/

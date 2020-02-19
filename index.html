@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Patterns at GAStech</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="#" />
+
+</head>
+
+
+<body>
+
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+
+    <div class="container">
+
+        <div class="row">
+            <img src="images/background.jpg" alt="text" class="img-bg"/>
+        </div>
+
+        <div class="row">
+            <h1 class="title">Patterns at GAStech</h1>
+        </div>
+
+        <br><br>
+        <!--
+            <div class="employee-figure"></div>
+            -->
+        <div class="card">
+            <div class="card-body">
+                <h2 class="c-title">Transaction History</h2>
+            </div>
+        </div>
+
+        <!--
+        <br>
+        <button id="save">save as image</button>
+-->
+        <br><br>
+        <div class="tran-figure"></div>
+
+
+
+
+        <br><br>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="c-title">Geospatial Tracking</h2>
+            </div>
+        </div>
+
+        <!--
+        <br><br>
+        <div class="row">
+            <select class="selectpicker" multiple data-live-search="true" data-live-search-placeholder="search" data-actions-box="true">
+
+                　　　　<option>option1</option>
+                　　　　<option>option2</option>
+                　　　　<option>option3</option>
+                　　　　<option>option4</option>
+
+            </select>
+        </div>
+        -->
+        
+        <br><br>
+        <!--
+        <div class="row">
+            <select class="selectpicker" id = "filter_carID" multiple data-live-search="true" title="CarID" data-actions-box="true" data-selected-text-format="count > 3">
+            </select>
+            <select class="selectpicker" id = "filter_employee" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+            </select>
+            <select class="selectpicker" id = "filter_date" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+            </select>
+            <select class="selectpicker" id = "filter_hour" multiple data-live-search="true" data-live-search-placeholder="Search" data-actions-box="true">
+            </select>
+        </div>
+        -->
+
+
+        <div class="row">
+            <div class="col">CarID</div>
+            <div class="col">Employee</div>
+            <div class="col">Date</div>
+            <div class="col">Hour</div>
+            <div class="w-100"></div>
+            <div class="col"><select class="selectpicker" id = "filter_carID" multiple data-live-search="true" title="All selected" data-actions-box="true" data-selected-text-format="count > 3">
+            </select></div>
+            <div class="col"><select class="selectpicker" id = "filter_employee" multiple data-live-search="true" title="All selected" data-actions-box="true" data-selected-text-format="count > 2">
+            </select></div>
+            <div class="col"><select class="selectpicker" id = "filter_date" multiple data-live-search="true" title="All selected" data-actions-box="true" data-selected-text-format="count > 3">
+            </select></div>
+            <div class="col"><select class="selectpicker" id = "filter_hour" multiple data-live-search="true" title="All selected" data-actions-box="true" data-selected-text-format="count > 3">
+            </select></div>
+          </div>
+        <br><br>
+        <!--<div class="gps-figure"></div>-->
+        <!--<div class="gps-figure" style="background: url('images/MC2-tourist.jpg');height: 600px;width: 1000px;background-size:cover;"></div>-->
+        <!--<div class="gps-figure" style="background: url('images/MC2-tourist4.jpg');width: 1000px;background-size:100%;background-position: center center;background-repeat: no-repeat;"></div>
+        -->
+        <div class="gps-figure" style="background: url('images/MC2-tourist4.jpg');width: 1000px;background-size:100%;background-position: center center;background-repeat: no-repeat;"></div>
+        
+        <!--
+        <br><br>
+        <div class="row">
+            <p id="test">Night</p>
+        </div>
+        -->
+
+
+
+        <br><br>
+
+
+        <!--
+        <p>Hover over - to see the city name and its density</p>
+        <p>Click hard - to mark a group of cities you are interested in with circles</p>
+        <span>Press the button - to compute average density for cities you marked</span>
+        <button type="button" class="btn btn-info btn-sm" id="average">Compute Average Density</button>
+        <p><p></p></p>
+        <span>Press the button - to start or stop the logging for your interactions</span>
+        <button type="button" class="btn btn-primary btn-sm" id="start">Start Logging</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="stop">Stop Logging </button>
+        -->
+    </div>
+
+    
+
+    <!--<script src="js/employee3.js"></script>-->
+    <script src="js/trans.js"></script>
+    <script src="js/gastech5.js"></script>
+    
+    
+    
+
+
+</body>
+
+</html>
+
+
