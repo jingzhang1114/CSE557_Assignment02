@@ -31,7 +31,22 @@
     padding-right: 50%;
 
 }
+#unit{
+    top:50%;
+    transform: translate(0, 35%);
+}
 
-#filter_carID{
-    margin: 20px;
+#unit1{
+    font-size: 14px;
+    color: grey;
+}
+
+#unit2{
+    font-size: 14px;
+    text-align: center;
+}
+
+#tran-details{
+    margin-left: 80px;
+    margin-top: 40px;
 }

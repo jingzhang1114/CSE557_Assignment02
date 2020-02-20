@@ -1,16 +1,12 @@
-//const w = 1000;
-//const h = 600;
-
-
 const w = 1000;
 const h = 500;
 
 let gps = []; // dataset from tsv file
-//let gps_cp = [];
+
 let employees = [];
 let info = [];
 let carAss = []; // CarID from car-assignment.csv, 1-35
-//let logging = []; // interactions logging
+
 let filter_carID = []; // CarID from gps.csv, 1-35, 101, 104-107
 let filter_employee = [];
 let filter_date = [];
@@ -66,12 +62,7 @@ d3.csv("data/car-assignments.csv")
 
 d3.csv("data/gps.csv")
        .row( (d, i) => {
-           /** 
-           let mark = 1;
-           if(d.x == "NaN" || d.y == "NaN") {
-               mark = 0;
-           }
-           */
+
             let thisName = "NaN";
             let thisTitle = "NaN";
             if(carAss.includes(+d.id)) {
@@ -110,9 +101,7 @@ d3.csv("data/gps.csv")
            }
            
            
-           //rows = wrangleData(rows);
-           //console.log("After dealing with missing data: Loaded " + rows.length + " rows");
-   
+
            gps = rows;
    
    
@@ -246,28 +235,6 @@ d3.csv("data/gps.csv")
 function draw(selectedID, selectedName, selectedDate, selectedHour) {
     console.log("Draw!");
     let dataFilter = [];
-
-    /** 
-    switch (category) {
-        case "carID":
-            let dataFilter = gps.filter(function(d){return selectedGroup.includes(d.carID.toString())})
-            break;
-        case "name":
-            let dataFilter = gps.filter(function(d){return selectedGroup.includes(d.name)})
-            break;
-    }
-    
-*/
-/** 
-    if(category == "carID") {
-        console.log("Match");
-        dataFilter = gps.filter(function(d){return selectedGroup.includes(d.carID.toString())});
-        console.log("End");
-    } else if(category == "name") {
-        dataFilter = gps.filter(function(d){return selectedGroup.includes(d.name.toString())});
-    }
-    */
-
     
 
     dataFilter = gps.filter(function(d){return selectedID.includes(d.carID.toString())});
@@ -297,50 +264,10 @@ function draw(selectedID, selectedName, selectedDate, selectedHour) {
         })
 	    .on('mouseout', function(d, i) {
 	      //console.log("mouseout", d);
-	    })/** 
-	    .on('click', function(d) {
-	    	var coords = d3.mouse(this);
-	    	circle(coords[0], coords[1]);
-	    	density.push(d.density);
-            cities.push(d.place);
-
-            
-            if(on == 1) {
-                //console.log("Event!");
-                //logging.push(d3.event);
-                cache = {type: d3.event.type, x: d3.event.x, y: d3.event.y, timeStamp: d3.event.timeStamp};
-                logging.push(cache);
-           
-            return tooltip.style("visibility", "visible").style("color","blue").text(d.place + ": " + d.density + ",   Current picked cities: " + cities);
-             }*/
+	    })
             
   }
 
-
-/** 
-svg.append("g")
-	.attr("class", "x axis")
-	.attr("transform", "translate(0, 580)")
-	//.orient("top")
-	//.attr("transform", "translate(0, " + h + ")")
-	.call(d3.axisBottom(x))
-	//.call(d3.axisBottom().scale(x))
-
-
-
-svg.append("g")
-	.attr("class", "y axis")
-	.attr("transform", "translate(30, 0)")
-	.call(d3.axisLeft(y))
-	//.call(d3.axisLeft().scale(y))
-	//svg.on('click', function(d) {
-        //var coords = d3.mouse(this);
-        //console.log(d.place);
-        //circle(coords[0], coords[1]);
-    //});
-
-    
-*/
 
 function getCarID() {
     return $("#filter_carID").val();
