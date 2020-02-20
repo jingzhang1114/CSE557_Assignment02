@@ -29,9 +29,9 @@ let svgT = d3.select("body").select(".tran-figure")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-var csv = d3.dsv(",", "text/csv;charset=utf-8");
 
-csv("data/cc_data.csv")
+
+d3.csv("data/cc_data.csv")
     .row( (d, i) => {
        //1/6/2014 7:28
 
@@ -113,7 +113,7 @@ csv("data/cc_data.csv")
             .html("Location: " +d.location+"<br/>"+"Hour: "+d.hour+"<br/>"+"Number of Records: "+d.number);
         })
         .on('click', function(d) {
- 
+
 
 
             //console.log("click!");
@@ -196,9 +196,10 @@ csv("data/cc_data.csv")
         })
 
 
+
     });
 
-  
+    
 
 
 function transData(rows) {
@@ -242,7 +243,7 @@ function transData(rows) {
                 "name": locations[i],
                 "children": eTree
             }
-            
+           
             
             tranData.push({
                 location: locations[i],
@@ -256,6 +257,7 @@ function transData(rows) {
         }
     }
 
-   
+
+    
 }
 
