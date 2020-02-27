@@ -31,6 +31,74 @@
         <div class="row">
             <h1 class="title">Patterns at GAStech</h1>
         </div>
+        
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Intructions</button>
+
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-xl" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Instructions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Introduction to the VA system</h5>
+                    <p>This is a visual analytic system which enable user interactions with given dataset. All data is displayed with interactive plots on which you can filter to focus on the data you are interested in, or hover over and click to find more details. We are only testing the performance of this web application, not your performance : ) Thank you for your kind participation. This web application is designed based on an interesting scenario, and you are welcomed to explore the data and detect suspicious clues to help with the puzzle. Let me introduce the story background.</p>
+                    <hr>
+                    <h5>Introduction to the task background</h5>
+                    <p>GAStech is a Tethys-based company operating a natural gas production site in the island country of Kronos. It has produced remarkable profits and developed strong relationships with the government of Kronos. However, GAStech has not been as successful in environmental protection during gas production.</p>
+                    <p>In January 2014, several employees of GAStech go missing on the company’s celebration event. An organization known as the Protectors of Kronos (POK) is suspected in the disappearance.</p>
+                    <p>As an expert in visual analytics, you are called in to help law enforcement from Kronos and Tethys investigate into the situation and detect suspicious events.</p>
+                    <hr>
+                    <h5>Introduction to the visualization space</h5>
+                    <p>Before you start the exploration, let me introduce the data visualization space. The first graph is a heatmap showing aggregating visiting frequency for each location during time intervals by hour. The color of each rectangle represents the level of frequency for this location and this hour. If you hover over the rectangle, you can see the corresponding location, hour and number of the rectangle. If you click on the rectangle, a treemap showing the composition of the visiting records will appear below the heatmap. Each rectangle in the treemap represents an employee who visited this location at the specific hour in these days. If you move the mouse cursor to the employee you are interested in, you can see his or her name, number of records and exact visiting dates.</p>
+                    <p>The second graph is a geolocation map showing employee’s car movement with gps data. The map automatically displays the routes of all cars in these days. You can use filters to select car ID, employee, date and hour, and the car routes will change correspondingly. You can select, deselect and search in the filters. If you move the mouse cursor around the map, you will see the employee’ name, title, car ID and timestamp for the location she or he once passed.</p>
+                    
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Tasks</button>
+
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-lg" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Tasks</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    <strong>Important: During the time you explore the data visualization, you are supposed to verbalize your thoughts and behavior while trying to make sense of the visualization.</strong>
+                    <br><br>
+                    <h5>Q1</h5>
+                    <p>Try to figure out the working hours of GAStech. When do the employees start working and when do they get off work?</p>
+                    
+                    <hr>
+                    <h5>Q2</h5>
+                    <p>Try to find someone who still drive around GAStech late at night sometimes. It would better if you could specify the dates he or she was around GAStech.</p>
+                    <hr>
+                    <h5>Q3 (Optional)</h5>
+                    <p>On January 10, Lucas Alcazar, who you found suspicious in the last question, left GAStech at the time the same as other employees. Try to figure out the gathering he attended after work on that day.</p>
+                    
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Next</button>
+                </div>
+            </div>
+            </div>
+        </div>
 
         <br><br>
 
